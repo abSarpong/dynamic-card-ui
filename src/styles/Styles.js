@@ -115,10 +115,21 @@ export const StyledStarFilledIcon = styled(StarFilled)`
 export const StyledMoreOutlinedIcon = styled(MoreOutlined)`
   font-size: 14px;
   color: #2a2941;
+`;
+
+export const StyledIcon = styled.span`
+  border-radius: 2px;
+  padding: 4px 6px;
+
+  ${(props) => {
+    if (props.noPadding) {
+      return `
+      padding: 0px;
+      `;
+    }
+  }}
 
   & :hover {
     cursor: pointer;
   }
 `;
-
-export const StyledIcon = styled.span``;

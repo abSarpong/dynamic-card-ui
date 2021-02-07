@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DropdownMenu from "./DropdownMenu";
 import {
   StyledStarOutlinedIcon,
@@ -7,6 +7,7 @@ import {
   StyledCardFooter,
   StyledIcon,
 } from "../styles/Styles";
+import "../styles/styles.css";
 
 const CardFooter = ({ favourite, menu }) => {
   const [visible, setVisibility] = useState(false);
@@ -15,7 +16,7 @@ const CardFooter = ({ favourite, menu }) => {
 
   if (favourite === true) {
     favouriteIcon = (
-      <StyledIcon onClick={() => setShowIcon(!showIcon)}>
+      <StyledIcon noPadding onClick={() => setShowIcon(!showIcon)}>
         {!showIcon ? <StyledStarOutlinedIcon /> : <StyledStarFilledIcon />}
       </StyledIcon>
     );
@@ -24,38 +25,21 @@ const CardFooter = ({ favourite, menu }) => {
   if (menu === true) {
     menuItem = (
       <StyledIcon
-        style={
-          !visible
-            ? {
-                border: "1px solid #d2d7df",
-                borderRadius: "2px",
-                paddingTop: "4px",
-                paddingRight: "6px",
-                paddingBottom: "4px",
-                paddingLeft: "6px",
-              }
-            : {
-                border: "1px solid #aacbff",
-                borderRadius: "2px",
-                backgroundColor: "#1254ff",
-                paddingTop: "4px",
-                paddingRight: "6px",
-                paddingBottom: "4px",
-                paddingLeft: "6px",
-              }
-        }
+        className={!visible ? "inactive-trigger" : "active-trigger"}
         onClick={() => setVisibility(!visible)}
       >
-        <StyledMoreOutlinedIcon
-          style={
-            !visible
-              ? { fontSize: "14px", color: "#2a2941" }
-              : { fontSize: "14px", color: "#ffffff" }
-          }
-        />
+        <StyledMoreOutlinedIcon style={visible ? { color: "#ffffff" } : null} />
       </StyledIcon>
     );
   }
+
+  // useEffect(() => {
+  //   document.addEventListener("mousedown", (event) => {
+  //     if (event.target) {
+  //       setVisibility(false);
+  //     }
+  //   });
+  // });
 
   return (
     <>
@@ -65,7 +49,7 @@ const CardFooter = ({ favourite, menu }) => {
         {favouriteIcon}
         {menuItem}
       </StyledCardFooter>
-      {visible ? <DropdownMenu /> : null}
+      {visible ? <DropdownMenu /> : ""}
     </>
   );
 };
