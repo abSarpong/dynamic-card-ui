@@ -37,7 +37,7 @@ const $Trigger = (props) => css`
   background-color: ${props.background};
 
   ${(props) => {
-    if (props.noPadding) {
+    if (props.nopadding) {
       return `
       padding: 0px;
       `;
@@ -61,7 +61,7 @@ const CardFooter = ({ favourite, menu }) => {
   /* eslint-disable */
   if (favourite) {
     favouriteIcon = (
-      <span noPadding onClick={() => setShowIcon(!showIcon)}>
+      <span nopadding="true" onClick={() => setShowIcon(!showIcon)}>
         {!showIcon ? <$FavouriteOutlineIcon /> : <$FavouriteFilledIcon />}
       </span>
     );
@@ -74,7 +74,7 @@ const CardFooter = ({ favourite, menu }) => {
         border={visible ? "#aacbff" : "#d2d7df"}
         onClick={() => setVisibility(!visible)}
       >
-        {!visible ? <$MoreOutlinedIcon /> : <$MoreOutlinedIcon active />}
+        {!visible ? <$MoreOutlinedIcon /> : <$MoreOutlinedIcon active="true" />}
       </$IconWrapper>
     );
   }

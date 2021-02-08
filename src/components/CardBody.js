@@ -25,7 +25,7 @@ const Text = styled.p`
   font-size: 14px;
   line-height: 22px;
   color: #2a2941;
-  margin-top: ${(props) => (props.marginTopMedium ? "24px" : 0)};
+  margin-top: ${(props) => (props.marginTopSmall ? "16px" : 0)};
 `;
 
 const MediumText = styled(Text)`
@@ -37,14 +37,14 @@ const CardBody = ({ title, description, day }) => {
   let descriptionText;
 
   if (description != null) {
-    descriptionText = <Text marginTopMedium>{description}</Text>;
+    descriptionText = <Text marginTopSmall>{description}</Text>;
   }
 
   return (
     /* eslint-disable */
     <$CardBody>
       <TruncatedHeading>{title}</TruncatedHeading>
-      <MediumText marginTopMedium>Last edited {day}</MediumText>
+      <MediumText marginTopSmall>Last edited {day}</MediumText>
       {descriptionText}
     </$CardBody>
   );

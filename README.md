@@ -1,3 +1,30 @@
+# Submission note
+
+NB: Some spacings (eg: trigger menu) may not meet requirements because I couldn’t access the sketch file provided to me due to expired license.
+I also left the css directory just in case
+
+I’ve been able to meet all requirements given for the challenge but I thought I should throw some light on certain decisions I made while on the quest.
+
+### Data
+
+I made a clone of my data in an object and exported it the main component. This could be improved by replacing it with data from an API and consumed via fetch etc.
+
+### Card layout
+
+I achieved various card layouts by testing for availability of specific data properties, so they adjust and render the cards based on that.
+
+### CSS
+
+I wrote my css in Styled Component in order to gain some flexibility around applying styles based on conditions. Also I wrote this styles in each component they apply to. This can also be done by having a styles directory and placing all styles in there then exporting to various components.
+
+### Title
+
+I truncated the title of the card with css style but it can also be done with javascript by getting the string length and proceeding it with ellipses.
+
+### Icons
+
+I pulled in ant design icons. Svgs can be used as well
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
