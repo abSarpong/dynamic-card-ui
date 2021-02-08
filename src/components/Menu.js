@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const ArticleMenu = styled.span`
+const $Menu = styled.span`
   border: 1px solid #d2d7df;
   border-radius: 2px;
   width: 110px;
@@ -27,11 +27,12 @@ const ArticleMenu = styled.span`
 
 const Menu = () => {
   return (
-    <ArticleMenu>
+    /* eslint-disable */
+    <$Menu>
       <a href="/">Save</a>
       <a href="/">Edit</a>
       <a href="/">Preview</a>
-    </ArticleMenu>
+    </$Menu>
   );
 };
 

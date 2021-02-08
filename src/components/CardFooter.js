@@ -1,21 +1,20 @@
 import { useState } from "react";
 import DropdownMenu from "./Menu";
 import styled, { css } from "styled-components";
-import "../styles/styles.css";
 import { MoreOutlined, StarFilled, StarOutlined } from "@ant-design/icons";
 
-const JustifyContent = (props) => css`
+const $JustifyContent = (props) => css`
   display: flex;
   justify-content: ${props.justify};
   padding: 16px;
   align-items: center;
 `;
 
-const ArticleCardFooter = styled.div`
-  ${JustifyContent};
+const $CardFooter = styled.div`
+  ${$JustifyContent};
 `;
 
-const FavouriteOutlineIcon = styled(StarOutlined)`
+const $FavouriteOutlineIcon = styled(StarOutlined)`
   font-size: 14px;
   color: #2a2941;
 
@@ -24,16 +23,18 @@ const FavouriteOutlineIcon = styled(StarOutlined)`
   }
 `;
 
-const FavouriteFilledIcon = FavouriteOutlineIcon.withComponent(StarFilled);
+const $FavouriteFilledIcon = $FavouriteOutlineIcon.withComponent(StarFilled);
 
-const MoreOutlinedIcon = styled(MoreOutlined)`
+const $MoreOutlinedIcon = styled(MoreOutlined)`
   font-size: 14px;
   color: ${(props) => (props.active ? "#ffffff" : "#2a2941")};
 `;
 
-const IconWrapper = styled.span`
+const $Trigger = (props) => css`
   border-radius: 2px;
   padding: 4px 5px;
+  border: 1px solid ${props.border};
+  background-color: ${props.background};
 
   ${(props) => {
     if (props.noPadding) {
@@ -48,36 +49,43 @@ const IconWrapper = styled.span`
   }
 `;
 
+const $IconWrapper = styled.span`
+  ${$Trigger};
+`;
+
 const CardFooter = ({ favourite, menu }) => {
   const [visible, setVisibility] = useState(false);
   const [showIcon, setShowIcon] = useState(false);
   let favouriteIcon, menuItem;
 
+  /* eslint-disable */
   if (favourite) {
     favouriteIcon = (
-      <IconWrapper noPadding onClick={() => setShowIcon(!showIcon)}>
-        {!showIcon ? <FavouriteOutlineIcon /> : <FavouriteFilledIcon />}
-      </IconWrapper>
+      <span noPadding onClick={() => setShowIcon(!showIcon)}>
+        {!showIcon ? <$FavouriteOutlineIcon /> : <$FavouriteFilledIcon />}
+      </span>
     );
   }
 
   if (menu) {
     menuItem = (
-      <IconWrapper
-        className={!visible ? "inactive-trigger" : "active-trigger"}
+      <$IconWrapper
+        background={visible ? "#1254ff" : "transparent"}
+        border={visible ? "#aacbff" : "#d2d7df"}
         onClick={() => setVisibility(!visible)}
       >
-        {!visible ? <MoreOutlinedIcon /> : <MoreOutlinedIcon active />}
-      </IconWrapper>
+        {!visible ? <$MoreOutlinedIcon /> : <$MoreOutlinedIcon active />}
+      </$IconWrapper>
     );
   }
 
   return (
+    /* eslint-disable */
     <>
-      <ArticleCardFooter justify={!favourite ? "flex-end" : "space-between"}>
+      <$CardFooter justify={!favourite ? "flex-end" : "space-between"}>
         {favouriteIcon}
         {menuItem}
-      </ArticleCardFooter>
+      </$CardFooter>
       {visible ? <DropdownMenu /> : ""}
     </>
   );

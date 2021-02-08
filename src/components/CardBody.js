@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const ArticleCardBody = styled.div`
+const $CardBody = styled.div`
   padding: 24px 16px;
 `;
 
@@ -41,11 +41,12 @@ const CardBody = ({ title, description, day }) => {
   }
 
   return (
-    <ArticleCardBody>
+    /* eslint-disable */
+    <$CardBody>
       <TruncatedHeading>{title}</TruncatedHeading>
       <MediumText marginTopMedium>Last edited {day}</MediumText>
       {descriptionText}
-    </ArticleCardBody>
+    </$CardBody>
   );
 };
 

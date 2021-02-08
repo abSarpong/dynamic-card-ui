@@ -2,12 +2,12 @@ import React from "react";
 import Card from "./Card";
 import styled from "styled-components";
 
-const Container = styled.div`
+const $Container = styled.div`
   max-width: 90%;
   margin: 0 auto;
 `;
 
-const Wrapper = styled.div`
+const $Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   column-gap: 32px;
@@ -15,17 +15,19 @@ const Wrapper = styled.div`
 
   @media only screen and (max-width: 640px) {
     grid-template-columns: 1fr;
+  }
 `;
 
 const Cards = ({ articles }) => {
   return (
-    <Container>
-      <Wrapper>
+    /* eslint-disable */
+    <$Container>
+      <$Wrapper>
         {articles.map((article) => (
           <Card key={article.id} article={article} />
         ))}
-      </Wrapper>
-    </Container>
+      </$Wrapper>
+    </$Container>
   );
 };
 

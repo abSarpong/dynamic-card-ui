@@ -2,13 +2,13 @@ import CardFooter from "./CardFooter";
 import CardBody from "./CardBody";
 import styled from "styled-components";
 
-const ArticleCard = styled.div`
+const $Card = styled.div`
   border: 1px solid #d2d7df;
   border-radius: 5px;
   margin-bottom: 32px;
 `;
 
-const Thumbnail = styled.img`
+const $Thumbnail = styled.img`
   height: 160px;
   width: 100%;
   object-fit: cover;
@@ -18,12 +18,13 @@ const Card = ({ article }) => {
   let image;
 
   if (article.thumbnail != null) {
-    image = <Thumbnail src={article.thumbnail} alt="Thumbnail" />;
+    /* eslint-disable */
+    image = <$Thumbnail src={article.thumbnail} alt="Thumbnail" />;
   }
 
   return (
     <div>
-      <ArticleCard>
+      <$Card>
         {image}
         <CardBody
           title={article.title}
@@ -33,7 +34,7 @@ const Card = ({ article }) => {
         {article.favourite || article.menu ? (
           <CardFooter favourite={article.favourite} menu={article.menu} />
         ) : null}
-      </ArticleCard>
+      </$Card>
     </div>
   );
 };
