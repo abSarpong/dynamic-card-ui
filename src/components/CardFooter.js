@@ -33,7 +33,7 @@ const MoreOutlinedIcon = styled(MoreOutlined)`
 
 const IconWrapper = styled.span`
   border-radius: 2px;
-  padding: 4px 6px;
+  padding: 4px 5px;
 
   ${(props) => {
     if (props.noPadding) {
