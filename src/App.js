@@ -1,5 +1,5 @@
 import Cards from './components/Cards';
-import articles from './data/data.js';
+import articles from './utils/data.js';
 
 function App() {
   return (

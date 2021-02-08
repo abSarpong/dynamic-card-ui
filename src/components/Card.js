@@ -1,6 +1,18 @@
 import CardFooter from "./CardFooter";
 import CardBody from "./CardBody";
-import { CardWrapper, StyledCard, Thumbnail } from "../styles/Styles";
+import styled from "styled-components";
+
+const ArticleCard = styled.div`
+  border: 1px solid #d2d7df;
+  border-radius: 5px;
+  margin-bottom: 32px;
+`;
+
+const Thumbnail = styled.img`
+  height: 160px;
+  width: 100%;
+  object-fit: cover;
+`;
 
 const Card = ({ article }) => {
   let image;
@@ -10,8 +22,8 @@ const Card = ({ article }) => {
   }
 
   return (
-    <CardWrapper>
-      <StyledCard>
+    <div>
+      <ArticleCard>
         {image}
         <CardBody
           title={article.title}
@@ -21,8 +33,8 @@ const Card = ({ article }) => {
         {article.favourite || article.menu ? (
           <CardFooter favourite={article.favourite} menu={article.menu} />
         ) : null}
-      </StyledCard>
-    </CardWrapper>
+      </ArticleCard>
+    </div>
   );
 };
 
