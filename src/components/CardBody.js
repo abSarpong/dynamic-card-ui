@@ -5,14 +5,14 @@ const $CardBody = styled.div`
   padding: 24px 16px;
 `;
 
-const Heading = styled.h3`
+const $Heading = styled.h3`
   font-size: 24px;
   line-height: 32px;
   color: #2a2941;
   font-weight: 400;
   }`;
 
-const TruncatedHeading = styled(Heading)`
+const $TruncatedHeading = styled($Heading)`
   width: "100%";
   overflow: hidden;
   text-overflow: ellipsis;
@@ -21,14 +21,14 @@ const TruncatedHeading = styled(Heading)`
   -webkit-box-orient: vertical;
 `;
 
-const Text = styled.p`
+const $Text = styled.p`
   font-size: 14px;
   line-height: 22px;
   color: #2a2941;
   margin-top: ${(props) => (props.marginTopSmall ? "16px" : 0)};
 `;
 
-const MediumText = styled(Text)`
+const $MediumText = styled($Text)`
   font-size: 16px;
   line-height: 24px;
 `;
@@ -36,15 +36,15 @@ const MediumText = styled(Text)`
 const CardBody = ({ title, description, day }) => {
   let descriptionText;
 
+  /* eslint-disable */
   if (description != null) {
-    descriptionText = <Text marginTopSmall>{description}</Text>;
+    descriptionText = <$Text marginTopSmall>{description}</$Text>;
   }
 
   return (
-    /* eslint-disable */
     <$CardBody>
-      <TruncatedHeading>{title}</TruncatedHeading>
-      <MediumText marginTopSmall>Last edited {day}</MediumText>
+      <$TruncatedHeading>{title}</$TruncatedHeading>
+      <$MediumText marginTopSmall>Last edited {day}</$MediumText>
       {descriptionText}
     </$CardBody>
   );
